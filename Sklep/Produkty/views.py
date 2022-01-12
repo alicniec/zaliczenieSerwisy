@@ -8,20 +8,22 @@ from django.template import loader
 def index(request):
 
     zapytanie = Produkty.objects.all()
-    return HttpResponse(zapytanie)
+    kategorie = Kategoria.objects.all()
 
-    kategorie = Produkty.objects.all()
-    # return HttpResponse(kategoria)
+    dane = {
+        'kategorie' : kategorie,
+        'zapytanie' : zapytanie
+    }
 
-    template = loader.get_template('produkty/index.html')
+    return render(request, 'produkty/index.html', dane)
+
 
 def kategoria(request, id):
     kategoria_user = Kategoria.objects.get(pk=id)
     return HttpResponse(kategoria_user.nazwa)
 
 
-
 def produkt(request, id):
     produkt_user = Produkty.objects.get(pk=id)
-    napis = "<h1>" + str(produkt_user) + "</h1>" + "<p>" + str(produkt_user.gatunek) + "</p>" + "<p>" + str(produkt_user.opis) + "</p>" + "<p>" + str(produkt_user.cena) + "</p>"
-    return HttpResponse(napis)
+    dane = {'produkt_user' : produkt_user}
+    return render(request, 'produkty/produkt.html', dane)

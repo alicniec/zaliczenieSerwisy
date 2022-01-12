@@ -21,7 +21,6 @@ from Produkty.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-    path('kategoria/<id>', kategoria, name='kategoria'),
-    path('produkt/<id>/', produkt, name='opis'),
-    path('produkt/<id>/', produkt, name='cena'),
+    path('kategorie/<id>', kategoria, name='kategoria'),
+    path('produkt/<id>/', produkt, name='produkt'),
 ]
