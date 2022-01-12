@@ -44,3 +44,5 @@ class Produkty(models.Model):
     class Meta:
         verbose_name = "Produkt"
         verbose_name_plural = "Produkty"
+
+    
