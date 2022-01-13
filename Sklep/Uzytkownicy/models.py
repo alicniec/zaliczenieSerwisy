@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import BaseUserManager
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 # Create your models here.
 
@@ -11,19 +11,28 @@ class UserManager(BaseUserManager):
         user = None
 
         if username is None:
-            raise TypeError("Users must have a username.")
+            raise ValueError("Users must have a username.")
         if email is None:
-            raise TypeError("Users must have a email address.")
+            raise ValueError("Users must have a email address.")
         
-        user = Klient.objects.create(username = username, email = self.normalize_email(email))
+        user = Uzytkownik.objects.create(username = username, email = self.normalize_email(email))
         if user:
             user.set_password(password)
             user.save()
         
         return user
 
+    def create_superuser(self, username, email, password):
+        if password is None:
+            raise ValueError('Superusers must have a password')
+        
+        user = self.create_user(username, email, password)
+        user.is_admin = True
+        user.is_superuser = True
+        user.save()
+        return user
 
-class Klient(models.Model):
+class Uzytkownik(AbstractBaseUser):
     imie = models.CharField(max_length=30)
     nazwisko = models.CharField(max_length=30)
     
@@ -34,11 +43,19 @@ class Klient(models.Model):
 
     data_utworzenia = models.DateTimeField(auto_now_add=True, null=True)
 
+    is_admin = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+
     objects = UserManager()
 
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
+
     class Meta:
-        verbose_name = "Klient"
-        verbose_name_plural = "Klienci"
+        verbose_name = "Użytkownik"
+        verbose_name_plural = "Użytkownicy"
         ordering = ['username']
     
     def __str__(self):
