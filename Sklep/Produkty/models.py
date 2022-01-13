@@ -1,8 +1,6 @@
 from django.db import models
 
 # Create your models here.
-# hej heje hehejejej
-
 
 class Gatunki(models.Model):
 
