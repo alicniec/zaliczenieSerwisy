@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from telnetlib import AUTHENTICATION
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,6 +29,10 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # AUTH_USER_MODEL = "Uzytkownicy.Uzytkownik"
+# AUTHENTICATION = (
+#     'django.contrib.auth.backends.AllowAllUsersModelBackend',
+#     'Uzytkownicy.backends.CaseInsensitiveModelBackend'
+# )
 
 # Application definition
 
@@ -38,9 +43,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
     'Produkty',
     'Uzytkownicy'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication'
+        #'rest_framework.authentication.TokenAuthentication'
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

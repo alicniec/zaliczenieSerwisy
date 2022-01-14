@@ -13,9 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url, include
 from Produkty.views import *
+from Uzytkownicy.views import *
+# from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 
 urlpatterns = [
@@ -23,4 +27,9 @@ urlpatterns = [
     path('', index),
     path('kategorie/<id>', kategoria, name='kategoria'),
     path('produkt/<id>/', produkt, name='produkt'),
+
+    path('api/', include('Uzytkownicy.urls')),
+    #path('auth/register/', RegistrationAPIView.as_view(), name='register'),
+    # path('auth/login/', TokenObtainPairView.as_view(), name='login'),
+    # path('auth/refresh-token', TokenRefreshView.as_view(), name='refreshToken'),
 ]
