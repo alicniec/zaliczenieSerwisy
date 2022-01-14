@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = "Uzytkownicy.Uzytkownik"
+# AUTH_USER_MODEL = "Uzytkownicy.Uzytkownik"
 
 # Application definition
 
