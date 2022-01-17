@@ -2,6 +2,8 @@ from django.db import models
 
 # Create your models here.
 
+#test 12344556
+
 class Gatunki(models.Model):
 
     nazwa = models.CharField(max_length=100)
