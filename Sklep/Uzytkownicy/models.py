@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
+import jwt
+import datetime
+from django.conf import settings
 # Create your models here.
 
 
@@ -68,6 +71,23 @@ class Uzytkownik(AbstractBaseUser):
     def has_module_perms(self, app_label):
         return True
 
+    @property
+    def token(self):
+        return self._generate_jwt_token()
+    
+    def _generate_jwt_token(self):
+        exp = datetime.datetime.now() + datetime.timedelta(days=60)
+        iat = datetime.datetime.now()
+
+        payload = {
+            'id': self.id,
+            'exp': datetime.datetime.now() + datetime.timedelta(days=60), #czas działa tokenu
+            'iat': datetime.datetime.now() #kiedy token został wygenerowany
+        }
+
+        token = jwt.encode(payload, "SECRET_KEY", algorithm='HS256')
+
+        return token
 
 
 

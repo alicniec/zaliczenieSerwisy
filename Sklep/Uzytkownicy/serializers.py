@@ -8,9 +8,13 @@ class RegistrationSerializer(serializers.ModelSerializer):
         max_length = 255, 
         min_length=8, 
         write_only=True)
+    
+    token = serializers.CharField(
+        max_length = 255, 
+        read_only=True)
     class Meta:
         model = Uzytkownik
-        fields = ('email', 'username', 'haslo',)
+        fields = ('email', 'username', 'haslo', 'token')
     
     def validate(self, data):
         email = data.get('email', None)
@@ -61,4 +65,4 @@ class LoginSerializer(serializers.ModelSerializer):
 class UzytkownikSerializer(serializers.ModelSerializer):
     class Meta:
         model = Uzytkownik
-        fields = ('email', 'username', 'haslo',)
+        fields = ('email', 'username', 'haslo', 'token')
