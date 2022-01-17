@@ -1,9 +1,11 @@
+from http.client import HTTPResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .serializers import RegistrationSerializer, UzytkownikSerializer, LoginSerializer
 from .models import Uzytkownik
 from rest_framework import status, generics, viewsets
 from rest_framework.response import Response
+from django.http import HttpResponseRedirect
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework import serializers
 
@@ -11,22 +13,32 @@ from django.contrib.auth import login
 
 from rest_framework.permissions import AllowAny
 from django.contrib.auth import authenticate
+from rest_framework.renderers import TemplateHTMLRenderer
+from rest_framework.views import APIView
 
 
 
-class RegistrationAPIView(generics.GenericAPIView):
+class RegistrationAPIView(APIView):
 
     permission_classes = (AllowAny,)
     serializer_class = RegistrationSerializer
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'uzytkownicy/register.html'
+
+    def get(self, request):
+        return Response({'serializer': self.serializer_class})
+
 
     def post(self, request):
-        serializer = self.get_serializer(data = request.data)
+        serializer = self.serializer_class(data = request.data)
 
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response({
             "Message": "Użytkownik utworzony pomyślnie",
             "User": serializer.data}, status=status.HTTP_201_CREATED)
+
+        
         
         #return Response({"Errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -34,6 +46,12 @@ class LoginAPIView(generics.GenericAPIView):
 
     permission_classes = (AllowAny,)
     serializer_class = LoginSerializer
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'uzytkownicy/login.html'
+
+
+    def get(self, request):
+        return Response({'serializer': self.serializer_class})
 
     def post(self, request):
         
@@ -50,11 +68,22 @@ class LoginAPIView(generics.GenericAPIView):
         
         if not user.is_active:
             raise serializers.ValidationError('Ten użytkownik jest nieaktywny.')
+        
+        redirect('login')
 
         return Response({
             "message": "Pomyślnie zalogowano użytkownika.",
             'jwt': user.token
         })
+        
+
+# class ProfileList(APIView):
+#     renderer_classes = [TemplateHTMLRenderer]
+#     template_name = 'uzytkownicy/register.html'
+
+#     def get(self, request):
+#         queryset = Uzytkownik.objects.all()
+        return Response({'profiles': queryset})
 
 class UzytkownikViewSet(viewsets.ModelViewSet):
     queryset = Uzytkownik.objects.all()

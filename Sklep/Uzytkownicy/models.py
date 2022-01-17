@@ -5,8 +5,6 @@ import jwt
 import datetime
 from django.conf import settings
 # Create your models here.
-#Komentarz parówa
-
 
 class UserManager(BaseUserManager):
 

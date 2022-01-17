@@ -2,12 +2,25 @@ from rest_framework import serializers
 from django.contrib.auth import authenticate
 from .models import Uzytkownik
 
+
+
 class RegistrationSerializer(serializers.ModelSerializer):
+    # email = serializers.EmailField(
+    #     max_length=255,
+    #     style={'input_type': 'email', 'placeholder': 'email', 'autofocus': True}
+    #     )
+
+    # username = serializers.CharField(
+    #     max_length=255, read_only=True,
+    #     style={'input_type': 'username', 'placeholder': 'username'}
+    #     )
 
     haslo = serializers.CharField(
         max_length = 255, 
         min_length=8, 
-        write_only=True)
+        write_only=True,
+        style={'input_type': 'password'}
+        )
     
     token = serializers.CharField(
         max_length = 255, 
@@ -32,36 +45,14 @@ class RegistrationSerializer(serializers.ModelSerializer):
         return Uzytkownik.objects.create_user(**validated_data)
 
 class LoginSerializer(serializers.ModelSerializer):
-#     # email = serializers.CharField(max_length = 255)
-#     # haslo = serializers.CharField(max_length=255, write_only=True)
+    email = serializers.EmailField(max_length = 255, style={'input_type': 'email'})
+    haslo = serializers.CharField(max_length=255, write_only=True, style={'input_type': 'password'})
 
     class Meta:
         model = Uzytkownik
         fields = ('email', 'haslo',)
 
-#     def validate(self, data):
-#         email = data.get('email', None)
-#         haslo = data.get('haslo', None)
 
-#         if email is None:
-#             raise serializers.ValidationError({'email': ('Email jest wymagany do zalogowania.')})
-        
-#         if haslo is None:
-#             raise serializers.ValidationError({'haslo': ('Haslo jest wymagane do zalogowania.')})
-        
-#         user = authenticate(username=email, password=haslo)
-
-#         if user is None:
-#             raise serializers.ValidationError({'email': ('Nie ma użytkownika o tym emailu.')})
-        
-#         if not user.is_active:
-#             raise serializers.ValidationError({'email': ('Konto jest dezaktywowane.')})
-        
-#         #return super().validate(data)
-#         return {
-#             'email': user.email,
-#             'haslo': user.haslo
-#         }
 class UzytkownikSerializer(serializers.ModelSerializer):
     class Meta:
         model = Uzytkownik
