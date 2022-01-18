@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-#test 12344556
+#test www
 
 class Gatunki(models.Model):
 
