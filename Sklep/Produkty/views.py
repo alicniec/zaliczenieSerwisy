@@ -33,3 +33,7 @@ class ProduktView(APIView):
         kategoria = Kategoria.objects.all()
         dane = {'kategoria_user' : kategoria_user, 'kategoria_produkt': kategoria_produkt, 'kategoria':kategoria}
         return render(request, 'produkty/kategoria.html', dane)
+
+
+
+    
