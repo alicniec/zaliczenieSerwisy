@@ -19,6 +19,7 @@ from django.urls import path
 from django.conf.urls import url, include
 from .router import router
 from Uzytkownicy.views import *
+from Produkty.viewsets import ProduktViewset
 
 
 urlpatterns = [
