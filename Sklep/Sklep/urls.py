@@ -20,7 +20,8 @@ from django.conf.urls import url, include
 from .router import router
 from Uzytkownicy.views import *
 from Produkty.viewsets import ProduktViewset
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,3 +30,6 @@ urlpatterns = [
     
     path('api/', include('Uzytkownicy.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
