@@ -1,4 +1,4 @@
-{% load static %}
+{% comment %} {% load static %}
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -12,14 +12,14 @@
             <ul>
                 <li><a href="#">Start</a></li>
                 <li><a href="#">Wyszukiwarka</a></li>
-                <li><a href="#">Wyloguj</a></li> 
+                <li><a href="#">Użytkownik</a></li> 
                 <li><a href="#">Kontakt</a></li>  
             </ul>
         </div>
         <div class="kat">
-            {% for kat in kategorie %}
+            {% for kat in kategoria%}
 
-            <p><a href = "kategorie/{{ kat.id }}">{{ kat.nazwa}}</a></p>
+            <p><a href = "produkt/{{ kat.id }}">{{ kat.nazwa}}</a></p>
         
         {% endfor %}
         </div>
@@ -29,4 +29,5 @@
     </div>
 
 </body>
-</html>
+</html> {% endcomment %}
+{{kategoria}}

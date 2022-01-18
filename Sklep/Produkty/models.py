@@ -7,16 +7,19 @@ from django.contrib.auth.models import BaseUserManager
 
 # Create your models here.
 
-
+class Kategoria(models.Model):
+    nazwa = models.CharField(max_length=100)
+    def __str__(self):
+        return self.nazwa + " "
 
 class Produkt(models.Model):
     nazwa = models.CharField(max_length=100)
     opis = models.TextField(blank=True)
     cena = models.DecimalField(max_digits=10, decimal_places=2)
     gatunek = models.CharField(max_length=100)
-    kategoria = models.CharField(max_length=255)
+    kategoria = models.ForeignKey(Kategoria, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name + " "
+        return self.nazwa + " "
 
     
