@@ -1,9 +1,12 @@
+from sqlite3 import connect
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 import jwt
 import datetime
 from django.conf import settings
+from django.core.mail import send_mail
+
 # Create your models here.
 
 class UserManager(BaseUserManager):
@@ -21,7 +24,14 @@ class UserManager(BaseUserManager):
         if user:
             user.set_password(haslo)
             user.save()
-        
+
+        send_mail(
+            'Rejestracja konta',
+            'Konto utworzono',
+            'sklep@gmail.com',
+            ['potegamaja@gmail.com'],
+        )
+
         return user
 
     def create_superuser(self, username, email, haslo):
@@ -34,6 +44,7 @@ class UserManager(BaseUserManager):
         user.is_staff = True
         user.save()
         return user
+
 
 class Uzytkownik(AbstractBaseUser):
     imie = models.CharField(max_length=30)

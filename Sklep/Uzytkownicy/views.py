@@ -15,18 +15,18 @@ from rest_framework.permissions import AllowAny
 from django.contrib.auth import authenticate
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
-
+from django.core.mail import send_mail
 
 
 class RegistrationAPIView(APIView):
 
     permission_classes = (AllowAny,)
     serializer_class = RegistrationSerializer
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'uzytkownicy/register.html'
+    # renderer_classes = [TemplateHTMLRenderer]
+    # template_name = 'uzytkownicy/register.html'
 
-    def get(self, request):
-        return Response({'serializer': self.serializer_class})
+    # def get(self, request):
+    #     return Response({'serializer': self.serializer_class})
 
 
     def post(self, request):
