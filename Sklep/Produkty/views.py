@@ -16,14 +16,20 @@ class ProduktView(APIView):
     # template_name = 'produkty/login.html'
 
     def index(request):
-        produkt = Produkt.objects.all()
-        dane = {'produkt' : produkt}
-        return render(request, 'produkt/index.html', dane)
+        kategoria = Kategoria.objects.all()
+        dane = {'kategoria' : kategoria}
+        return render(request, 'produkty/index.html', dane)
 
     def produkt(request, id):
         produkt_user = Produkt.objects.get(pk=id)
-        return HttpResponse(produkt_user.nazwa)
+        kategoria = Kategoria.objects.all()
+        dane = {'produkt_user' : produkt_user, 'kategoria' : kategoria}
+
+        return render(request, 'produkty/produkt.html', dane)
 
     def kategoria(request, id):
         kategoria_user = Kategoria.objects.get(pk=id)
-        return HttpResponse(kategoria_user.nazwa)
+        kategoria_produkt = Produkt.objects.filter(kategoria = kategoria_user)
+        kategoria = Kategoria.objects.all()
+        dane = {'kategoria_user' : kategoria_user, 'kategoria_produkt': kategoria_produkt, 'kategoria':kategoria}
+        return render(request, 'produkty/kategoria.html', dane)

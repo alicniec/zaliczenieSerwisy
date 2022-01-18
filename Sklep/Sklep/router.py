@@ -4,3 +4,4 @@ from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register('produkt', ProduktViewset, KategoriaViewset)
+router.register('kategoria', KategoriaViewset)
