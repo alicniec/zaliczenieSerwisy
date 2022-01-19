@@ -1,5 +1,5 @@
-{%extends 'produkty/index.html' %}
-{% block produkt %}
+{%extends 'produkty/base.html' %}
+{% block content %}
     {% if produkt_user %}
         <h2>{{produkt_user.nazwa}}</h2>
         <p>{{produkt_user.opis}}</p>
@@ -9,4 +9,4 @@
     {% else %}
         <p>Nie ma takiego produktu</p>
     {%endif%}
-{% endblock produkt %}
+{% endblock content %}

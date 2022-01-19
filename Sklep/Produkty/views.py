@@ -17,7 +17,8 @@ class ProduktView(APIView):
 
     def index(request):
         kategoria = Kategoria.objects.all()
-        dane = {'kategoria' : kategoria}
+        produkt_user = Produkt.objects.all()
+        dane = {'kategoria' : kategoria, 'produkt_user':produkt_user}
         return render(request, 'produkty/index.html', dane)
 
     def produkt(request, id):
@@ -35,6 +36,8 @@ class ProduktView(APIView):
         kategoria = Kategoria.objects.all()
         dane = {'kategoria_user' : kategoria_user, 'kategoria_produkt': kategoria_produkt, 'kategoria':kategoria}
         return render(request, 'produkty/kategoria.html', dane)
+
+    
 
 
 

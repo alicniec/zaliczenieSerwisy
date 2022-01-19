@@ -1,34 +1,16 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" >
-    <title>Strona zaliczeniowa</title>
-</head>
-<body>
-    <div class="container">
-        <div class="navigation">
-            <ul>
-                <li><a href="#">Logo</a></li>
-                <li><a href="#">Start</a></li>
-                <li><a href="#">Wyszukiwarka</a></li>
-                <li><a href="#">Użytkownik</a></li> 
-                <li><a href="#">Kontakt</a></li>  
-            </ul>
-        </div>
-        <div class="kat">
-
-            {% for kat in kategoria%}
-
-            <p><a href = "/kategoria/{{ kat.id }}/">{{ kat.nazwa}}</a></p> 
-
-            {% endfor %}
-        </div>
-        <div class="desc">
-            {% block produkt %} {% endblock produkt %}
-        </div>
+{%extends 'produkty/base.html' %}
+{% block content %}
+<div class="grid"> 
+{% for prod in produkt_user%}
+<div class="card " style="width: auto;">
+    <img src="{{prod.zdjecia.url}}" class="card-img-top zdj" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{prod.nazwa}}</h5>
+      <p class="card-text">{{prod.gatunek}}</p>
+      <a href="/produkt/{{prod.id}}" class="btn btn-primary">Przejdz</a>
     </div>
+  </div>
+{% endfor %}
+</div>
+{% endblock content %}
 
-</body>
-</html> 

@@ -30,7 +30,7 @@ from Produkty.models import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', ProduktView.index),
-    path('produkt/<id>', ProduktView.produkt, name='produkt'),
+    path('produkt/<id>/', ProduktView.produkt, name='produkt'),
     path('kategoria/<id>/', ProduktView.kategoria, name='kategoria'),
 
     path('api/', include(router.urls)),

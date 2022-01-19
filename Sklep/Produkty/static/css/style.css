@@ -1,31 +1,39 @@
-.container {  display: grid;
-  grid-template-columns: 0.5fr 1.5fr;
-  grid-template-rows: 0.25fr 1fr;
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+.container123 {  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 50px 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
+  width: 100%;
+  height: 100vh;
+
   grid-template-areas:
     "navigation navigation"
     "kat desc";
 }
 
-.navigation { grid-area: navigation; 
+.navigation { 
+  grid-area: navigation; 
 }
 
 .kat { grid-area: kat; 
-background-color: red}
+  padding: 2rem;
+}
 
 .desc { grid-area: desc; 
-  background-color: blue}
-
-
-ul
-{
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  background: gray;
-  height: 50px;
+  background-color: rgba(247, 247, 247, 0.712);
+  overflow-y:auto;
+  padding: 4rem;
 }
+
 
 li{
 	padding: 15px 0;
@@ -41,4 +49,35 @@ a{
 
 a:hover, a:focus{
     color: green;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem ;
+}
+
+.zdj{
+  object-fit: cover;
+  width: 100%;
+  height:300px;
+}
+
+.nav1{
+  display: flex;
+  align-items: center;
+  margin: 0;
+  list-style-type: none;
+  background: rgb(195, 253, 210);
+  height: 50px;
+  padding: 0 4rem ;
+}
+
+.nav1 li{
+  margin-left: 2rem;
+}
+
+.nav1 li:first-child{
+  margin-left: 0 !important;
+  
 }
