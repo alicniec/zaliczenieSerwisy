@@ -24,6 +24,7 @@ class ProduktView(APIView):
         produkt_user = Produkt.objects.get(pk=id)
         kategoria = Kategoria.objects.all()
         dane = {'produkt_user' : produkt_user, 'kategoria' : kategoria}
+        print(produkt_user, produkt_user.id)
 
         return render(request, 'produkty/produkt.html', dane)
 
