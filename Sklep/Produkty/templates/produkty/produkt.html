@@ -5,7 +5,7 @@
         <p>{{produkt_user.opis}}</p>
         <p>{{produkt_user.cena}}</p>
         <p>{{produkt_user.gatunek}}</p>
-        <p><img src="{{produkt_user.zdjecia}}"  width="400" height="300"/></p>
+        <p><img src="{{produkt_user.zdjecia.url}}"  width="400" height="300"/></p>
     {% else %}
         <p>Nie ma takiego produktu</p>
     {%endif%}
