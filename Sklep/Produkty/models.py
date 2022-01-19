@@ -18,7 +18,7 @@ class Produkt(models.Model):
     cena = models.DecimalField(max_digits=10, decimal_places=2)
     gatunek = models.CharField(max_length=100)
     kategoria = models.ForeignKey(Kategoria, on_delete=models.CASCADE)
-    zdjecia = models.ImageField(upload_to='images/', default="")
+    zdjecia = models.ImageField(upload_to='home/')
     def __str__(self):
         return self.nazwa + " "
 

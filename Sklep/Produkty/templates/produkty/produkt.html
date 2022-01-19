@@ -5,9 +5,7 @@
         <p>{{produkt_user.opis}}</p>
         <p>{{produkt_user.cena}}</p>
         <p>{{produkt_user.gatunek}}</p>
-        {% load static %}
-
-        <img src="{% static '/images/{{produkt_user.id}}.jpg' %}" alt="/images/{{produkt_user.id}}.jpg" /> 
+        <p><img src="{{produkt_user.zdjecia}}"  width="400" height="300"/></p>
     {% else %}
         <p>Nie ma takiego produktu</p>
     {%endif%}
