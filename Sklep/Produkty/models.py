@@ -6,6 +6,7 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager
 
 # Create your models here.
+#test
 
 class Kategoria(models.Model):
     nazwa = models.CharField(max_length=100)
