@@ -29,12 +29,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# AUTH_USER_MODEL = "Uzytkownicy.Uzytkownik"
-# AUTHENTICATION = (
-#     #'django.contrib.auth.backends.AllowAllUsersModelBackend',
-#     #'Uzytkownicy.backends.CaseInsensitiveModelBackend'
-#     'Uzytkownicy.backends.JWTAuthentication'
-# )
+AUTH_USER_MODEL = "Uzytkownicy.Uzytkownik"
+AUTHENTICATION = (
+    #'django.contrib.auth.backends.AllowAllUsersModelBackend',
+    #'Uzytkownicy.backends.CaseInsensitiveModelBackend'
+    'Uzytkownicy.backends.JWTAuthentication'
+)
 
 # Application definition
 
@@ -154,9 +154,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = "sklep.kwiat@gmail.com"
-EMAIL_HOST_PASSWORD = "kwiatki1"
-EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = "sklep.kwiat@gmail.com"
+# EMAIL_HOST_PASSWORD = "kwiatki1"
+# EMAIL_USE_TLS = True
 #EMAIL_USE_SSL = False

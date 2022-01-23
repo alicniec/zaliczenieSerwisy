@@ -46,12 +46,12 @@ class LoginAPIView(generics.GenericAPIView):
 
     permission_classes = (AllowAny,)
     serializer_class = LoginSerializer
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'uzytkownicy/login.html'
+    # renderer_classes = [TemplateHTMLRenderer]
+    # template_name = 'uzytkownicy/login.html'
 
 
-    def get(self, request):
-        return Response({'serializer': self.serializer_class})
+    # def get(self, request):
+    #     return Response({'serializer': self.serializer_class})
 
     def post(self, request):
         
@@ -69,7 +69,7 @@ class LoginAPIView(generics.GenericAPIView):
         if not user.is_active:
             raise serializers.ValidationError('Ten użytkownik jest nieaktywny.')
         
-        redirect('login')
+        # redirect('login')
 
         return Response({
             "message": "Pomyślnie zalogowano użytkownika.",
