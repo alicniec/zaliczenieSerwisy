@@ -32,6 +32,7 @@ urlpatterns = [
     path('', ProduktView.index),
     path('produkt/<id>/', ProduktView.produkt, name='produkt'),
     path('kategoria/<id>/', ProduktView.kategoria, name='kategoria'),
+    path('kontakt', ProduktView.kontakt),
 
     path('api/', include(router.urls)),
     

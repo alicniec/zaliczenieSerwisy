@@ -1,11 +1,17 @@
 {%extends 'produkty/base.html' %}
 {% block content %}
     {% if produkt_user %}
-        <h2>{{produkt_user.nazwa}}</h2>
-        <p>{{produkt_user.opis}}</p>
-        <p>{{produkt_user.cena}}</p>
-        <p>{{produkt_user.gatunek}}</p>
-        <p><img src="{{produkt_user.zdjecia.url}}"  width="400" height="300"/></p>
+    <div class="mainDescPic">
+        <div class="picsDesc">
+            <p><img src="{{produkt_user.zdjecia.url}}"  width="400" height="300"/></p>
+        </div>
+        <div class="mainDesc"> 
+            <h2>{{produkt_user.nazwa}}</h2>
+            <p>{{produkt_user.opis}}</p>
+            <p>Cena: {{produkt_user.cena}} zł</p>
+            <p>Gatunek: {{produkt_user.gatunek}}</p>
+        </div>
+    </div>
     {% else %}
         <p>Nie ma takiego produktu</p>
     {%endif%}

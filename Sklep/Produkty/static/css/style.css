@@ -81,3 +81,23 @@ a:hover, a:focus{
   margin-left: 0 !important;
   
 }
+
+.mainDescPic{
+  display: flex;
+  justify-content: center;
+  /* background-color: yellow; */
+  padding: 3rem;
+}
+
+.mainDesc{
+  padding-left: 5rem;
+}
+
+.mainDesc h2{
+  padding-bottom: 1rem;
+}
+
+.contact h1{
+  margin-bottom: 3rem;
+}
+

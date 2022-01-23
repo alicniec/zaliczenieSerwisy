@@ -26,7 +26,6 @@ class ProduktView(APIView):
         kategoria = Kategoria.objects.all()
 
         dane = {'produkt_user' : produkt_user, 'kategoria' : kategoria}
-        print(produkt_user, produkt_user.id)
 
         return render(request, 'produkty/produkt.html', dane)
 
@@ -36,6 +35,11 @@ class ProduktView(APIView):
         kategoria = Kategoria.objects.all()
         dane = {'kategoria_user' : kategoria_user, 'kategoria_produkt': kategoria_produkt, 'kategoria':kategoria}
         return render(request, 'produkty/kategoria.html', dane)
+
+    def kontakt(request):
+        kategoria = Kategoria.objects.all()
+        dane = {'kategoria' : kategoria}
+        return render(request, 'produkty/kontakt.html', dane)
 
     
 
