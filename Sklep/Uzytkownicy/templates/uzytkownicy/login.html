@@ -3,7 +3,7 @@
 <html><body>
     <h3>Logowanie</h3>
 
-    <form action="{% url 'login' %}" method="post" novalidate>
+    <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
         {% render_form serializer %}
         <button type="submit">Sign in</button>

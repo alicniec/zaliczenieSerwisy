@@ -25,12 +25,12 @@ class UserManager(BaseUserManager):
             user.set_password(haslo)
             user.save()
 
-        # send_mail(
-        #     'Rejestracja konta',
-        #     'Konto utworzono',
-        #     'sklep@gmail.com',
-        #     ['potegamaja@gmail.com'],
-        # )
+        send_mail(
+            'Rejestracja konta',
+            'Cześć ' + username + '! Twoje konto w serwisie zostało utworzone.',
+            'sklepkwiatki@gmail.com',
+            [email],
+        )
 
         return user
 
