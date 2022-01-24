@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'Produkty',
-    'Uzytkownicy'
+    'Uzytkownicy',
+    'Cart'
 ]
 
 REST_FRAMEWORK = {
@@ -59,6 +60,9 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'Uzytkownicy.backends.JWTAuthentication',
     ),  
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    )
 }
 
 MIDDLEWARE = [

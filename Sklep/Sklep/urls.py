@@ -27,9 +27,13 @@ from django.conf.urls.static import static
 from Produkty.views import *
 from Produkty.models import *
 
+from Cart.views import *
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', ProduktView.index),
+    path('', ProduktView.index, name="base"),
     path('produkt/<id>/', ProduktView.produkt, name='produkt'),
     path('kategoria/<id>/', ProduktView.kategoria, name='kategoria'),
     path('kontakt', ProduktView.kontakt),
@@ -37,4 +41,8 @@ urlpatterns = [
     path('api/', include(router.urls)),
     
     path('api/', include('Uzytkownicy.urls')),
+
+    path('item/', UserCart)
+
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
