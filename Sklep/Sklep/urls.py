@@ -27,9 +27,6 @@ from django.conf.urls.static import static
 from Produkty.views import *
 from Produkty.models import *
 
-from Cart.views import *
-
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -41,8 +38,6 @@ urlpatterns = [
     path('api/', include(router.urls)),
     
     path('api/', include('Uzytkownicy.urls')),
-
-    path('item/', UserCart)
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

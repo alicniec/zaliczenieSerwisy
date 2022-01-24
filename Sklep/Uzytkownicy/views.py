@@ -15,7 +15,6 @@ from django.contrib.auth import authenticate
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
 
-from Cart.models import Item, ItemsCart
 
 
 

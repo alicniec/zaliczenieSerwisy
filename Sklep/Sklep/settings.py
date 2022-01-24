@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'Produkty',
     'Uzytkownicy',
-    'Cart'
 ]
 
 REST_FRAMEWORK = {
