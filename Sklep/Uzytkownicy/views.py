@@ -15,7 +15,7 @@ from django.contrib.auth import authenticate
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
 
-
+from django.http import HttpResponse
 
 
 class RegistrationAPIView(APIView):
@@ -79,8 +79,10 @@ class LoginAPIView(generics.GenericAPIView):
         #     "message": "Pomyślnie zalogowano użytkownika.",
         #     'jwt': user.token
         # })
-
+        request.session['user'] = user
         return redirect("base")
+    
+
 
 
 
