@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render, redirect
 
 from Produkty.models import Produkt
@@ -8,7 +9,7 @@ from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework import serializers
 
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 
 from rest_framework.permissions import AllowAny
 from django.contrib.auth import authenticate
@@ -70,19 +71,24 @@ class LoginAPIView(generics.GenericAPIView):
 
         if not user.check_password(haslo):
             raise AuthenticationFailed("Złe hasło")
-            #redirect("login")
         
         if not user.is_active:
             raise serializers.ValidationError('Ten użytkownik jest nieaktywny.')
-            
+        
+        login(request, user)    
+        
         # return Response({
         #     "message": "Pomyślnie zalogowano użytkownika.",
         #     'jwt': user.token
         # })
-        request.session['user'] = user
+
         return redirect("base")
     
+class LogoutAPIView(generics.GenericAPIView):
+    def get(self, request):
 
+        logout(request)
+        return redirect("base")
 
 
 
