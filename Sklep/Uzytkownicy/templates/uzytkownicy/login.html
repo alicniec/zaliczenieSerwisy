@@ -1,11 +1,30 @@
 {% load rest_framework %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleLog.css' %}" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logowanie</title>
+</head>
+<body>
+    <div class="wrap">
+        <div class="log">
+            <p>Logowanie</p>
+        </div>
+        <div class="userLog">
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                {% render_form serializer %}
+        </div>
+        <div class="btnL">
+                <button class="btnLog" type="submit">Zaloguj się</button>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
 
-<html><body>
-    <h3>Logowanie</h3>
-
-    <form action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        {% render_form serializer %}
-        <button type="submit">Sign in</button>
-    </form>
-</body></html>

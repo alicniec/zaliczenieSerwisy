@@ -68,7 +68,7 @@ a:hover, a:focus{
   align-items: center;
   margin: 0;
   list-style-type: none;
-  background: rgb(195, 253, 210);
+  background: rgba(217, 246, 250, 0.692);
   height: 50px;
   padding: 0 4rem ;
 }

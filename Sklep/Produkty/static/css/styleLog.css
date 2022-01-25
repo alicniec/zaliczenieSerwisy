@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+	background: rgba(234, 245, 250, 0.603) !important;	
+  }
+
+
+.wrap {	
+    background:white;
+    width:400px;
+    border-radius:6px;
+    margin: 15rem auto 0 auto;  
+    padding:0px 0px 70px 0px;
+    box-shadow: 0px 0px 15px rgb(201, 201, 201);
+    text-align: center;
+}
+
+
+.log p{
+    padding-top: 2rem;
+    font-size:22px;
+    color: rgb(99, 98, 98);
+}
+.form-group{
+    margin: 1rem;
+}
+
+.form-group label{
+    margin: 1rem;
+    color: rgb(112, 112, 112);
+    font-size: 15px;
+    
+}
+
+.form-control{
+    background:rgba(240, 240, 240, 0.486);
+    border: #ccc 1px solid;
+    border-bottom: #ccc 2px solid;
+    padding: 7px;
+    width:200px;
+    color:#AAAAAA;
+    margin-top:10px;
+    font-size:1em;
+    border-radius:4px;
+}
+
+.btnLog{
+    background: rgba(106, 159, 209, 0.808);
+    width:125px;
+    height: 35px;
+    padding-top:5px;
+    padding-bottom:5px;
+    color:white;
+    border-radius:4px;
+    border: rgba(106, 159, 209, 0.692);
+    margin-top: 1rem;
+}
