@@ -10,9 +10,10 @@
             <p>{{produkt_user.opis}}</p>
             <p>Cena: {{produkt_user.cena}} zł</p>
             <p>Gatunek: {{produkt_user.gatunek}}</p>
+            <button id="btnAdd" nazwaProd= "{{produkt_user.nazwa}}" idProd="{{produkt_user.id}}" type="button" class="btn btn-primary">Dodaj</button>
         </div>
-
     </div>
+
     {% else %}
         <p>Nie ma takiego produktu</p>
     {%endif%}
